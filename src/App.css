@@ -31,3 +31,12 @@ footer {
   width: 100%;
   transition: top 1s;
 }
+.CanvasS{
+  width: 100vw;
+  height: 100vh;
+}
+.CanvasCard{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
