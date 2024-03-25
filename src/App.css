@@ -5,7 +5,8 @@
   height: 200px;
   border-radius: 10%;
   background: black;
-  
+  justify-content: center;
+  align-items: center;
   bottom: 0px;
   transition:2s;
 
@@ -17,7 +18,7 @@
 .OrganizeCards {
   display: flex;
   flex-direction: row;
-  gap: 0px;
+  gap: 2px;
   
 }
 footer {
