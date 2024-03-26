@@ -1,6 +1,6 @@
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
-
+import React, { useEffect, useRef } from 'react'
+import { useGLTF, useAnimations } from '@react-three/drei'
+import { useDelerAnim } from './main'
 export function MESA(props) {
   const { nodes, materials } = useGLTF('./components/mesa.glb')
   return (
@@ -42,3 +42,41 @@ export function CardsLOt(props) {
   }
   
   useGLTF.preload('./components/butondone.glb')
+
+  export function Deler(props) {
+    const group = useRef()
+    const { nodes, materials, animations } = useGLTF('./components/maoob.glb')
+    const {setAnimations} = useDelerAnim();
+    const {actions, names} = useAnimations(animations,group);
+    
+    useEffect(()=> {
+      setAnimations(names);
+    }, [names])
+
+
+    useEffect(()=> {
+      actions[names[0]].reset().fadeIn(0.5).play();
+    }, [])
+    return (
+      <group castShadow receiveShadow ref={group} {...props} dispose={null}>
+        <group name="Scene">
+          <group name="Armature" position={[-2, 3.5, -0.99]} rotation={[0,3.2,0.9]}>
+            <primitive object={nodes.Bone_r} />
+            <primitive object={nodes.Bone008_r} />
+            <primitive object={nodes.Bone010_r} />
+            <primitive object={nodes.Bone012_r} />
+            <primitive object={nodes.Bone014_r} />
+            <primitive object={nodes.Bone_r001} />
+            <primitive object={nodes.Bone008_r001} />
+            <primitive object={nodes.Bone010_r001} />
+            <primitive object={nodes.Bone012_r001} />
+            <primitive object={nodes.Bone014_r001} />
+            <skinnedMesh name="Cube003" geometry={nodes.Cube003.geometry} material={materials['Material.006']} skeleton={nodes.Cube003.skeleton} />
+          </group>
+        </group>
+      </group>
+    )
+  }
+  
+  useGLTF.preload('./components/maoob.glb')
+  

@@ -5,7 +5,7 @@ import { Experience } from '../components/Experience';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import React, { useRef, useState, createContext, useContext } from 'react';
 import styled from 'styled-components';
-import { CardsLOt, DoneB } from '../components/mesa.jsx';
+import { CardsLOt, DoneB,Deler } from '../components/mesa.jsx';
 
 
 const CardStyleH1 = styled.h1`
@@ -15,6 +15,33 @@ const CardStyleH1 = styled.h1`
 const randomNumberInRange = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
+
+const DelerAnimContext = createContext({});
+
+export const DelerAnimProvider = (props) => {
+    const [animationIndex, setAnimationIndex] = useState(0);
+    const [animations,setAnimations] = useState([]);
+    return( <DelerAnimContext.Provider value={{
+        animationIndex, 
+        setAnimationIndex,
+        animations,
+        setAnimations,
+        
+    }}>
+        {props.children}
+    </DelerAnimContext.Provider>
+    );
+};
+
+export const useDelerAnim = () => {
+
+    return useContext(DelerAnimContext);
+}
+
+
+
+
 
 export function Main() {
 
@@ -46,6 +73,7 @@ export function Main() {
                 </Experience>
                 <CardsLOt onClick={handleClick}/>
                 <DoneB />
+                <Deler></Deler>
         </Canvas></div>
        
      
