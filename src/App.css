@@ -32,6 +32,7 @@ footer {
   transition: top 1s;
 }
 .CanvasS{
+  position:relative;
   width: 100vw;
   height: 100vh;
 }
@@ -39,4 +40,23 @@ footer {
   position: absolute;
   width: 100vw;
   height: 100vh;
+}
+
+
+.overLayer{
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 1;
+
+}
+.MainOver{
+  position: absolute;
+  width: 30%;
+  height: 50%;
+  background-color: blue;
 }

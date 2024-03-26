@@ -9,7 +9,7 @@ export const Experience = () => {
     return (
             <>
 
-            <pointLight position={[0,0,3.8]} intensity={7} />
+            <pointLight position={[1,0.8,0]} intensity={7} />
             <MESA></MESA>
            
             
