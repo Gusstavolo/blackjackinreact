@@ -119,10 +119,18 @@ transition: 1s;
 .ButJogar:hover{
   font-size: 3.3rem;
 }
-@media screen {
-  
-}
-@media (width < 688px) {
+
+
+@media (width < 600px) {
  
-  
+  .OnlyPC{
+    position: absolute;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;align-items: center;
+    background-color: black;
+    color: azure;
+    font-size: 3rem;
+   }
 }

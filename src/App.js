@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { Main, Overlayer } from './components/main';
+import { Main, Overlayer, Phone } from './components/main';
 import React, { useRef, useState, createContext, useContext } from 'react';
 
 
@@ -16,6 +16,7 @@ function App() {
       
          <Main></Main>
           <Overlayer></Overlayer>
+          <div className='OnlyPC'>Only pc :C</div>
     </div>
    
    
