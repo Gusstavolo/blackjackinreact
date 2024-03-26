@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { DelerAnimProvider } from './components/main';
+import { DelerAnimProvider } from './components/animation';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <DelerAnimProvider>

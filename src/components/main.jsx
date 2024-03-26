@@ -6,7 +6,7 @@ import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import React, { useRef, useState, createContext, useContext } from 'react';
 import styled from 'styled-components';
 import { CardsLOt, DoneB,Deler } from '../components/mesa.jsx';
-
+import { DelerAnimProvider,useDelerAnim } from './animation.jsx';
 
 const CardStyleH1 = styled.h1`
     font-size: 4rem;
@@ -17,43 +17,22 @@ const randomNumberInRange = (min, max) => {
 };
 
 
-const DelerAnimContext = createContext({});
-
-export const DelerAnimProvider = (props) => {
-    const [animationIndex, setAnimationIndex] = useState(0);
-    const [animations,setAnimations] = useState([]);
-    return( <DelerAnimContext.Provider value={{
-        animationIndex, 
-        setAnimationIndex,
-        animations,
-        setAnimations,
-        
-    }}>
-        {props.children}
-    </DelerAnimContext.Provider>
-    );
-};
-
-export const useDelerAnim = () => {
-
-    return useContext(DelerAnimContext);
-}
 
 
 
+export const Main = () => {
+    
 
-
-export function Main() {
-
-  
     const [cards, setCards] = useState([]);
 
     console.log("Valores das cartas:", cards);
     
     const handleClick = () => {
+        
         const num = randomNumberInRange(1, 13);
         const newCard = { id: Date.now(), num };
         setCards([...cards, newCard]);
+       
     };
 
 
@@ -99,10 +78,20 @@ export function Main() {
    
     </>)}
 
-export function Overlayer(){
-    return(
-        <div className='overLayer'>
-        <div className='MainOver'> </div>
+export function Overlayer() {
+    const [isVisible, setIsVisible] = useState(true);
+
+    const click = () => {
+        setIsVisible(false); // Define isVisible como false quando a div é clicada
+    };
+
+    return (
+        <div className={isVisible ? 'overLayer' : 'overLayer hidden'}>
+            <div className='MainOver'>
+                <div onClick={click} className='ButJogar'>
+                    JOGAR
+                </div>
+            </div>
         </div>
-    )
+    );
 }

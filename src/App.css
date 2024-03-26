@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Signika:wght@300..700&family=Staatliches&family=Workbench&display=swap');
+
 .App {
   background-color: black;
 }
@@ -54,31 +56,73 @@ footer {
   height: 100vh;
 }
 
-
+@keyframes OnOver {
+  from{opacity: 0;}
+  to{opacity: 0.5;}
+  
+}
 .overLayer{
-  display: none;
+  display: flex;
   position: absolute;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
   background-color: black;
-  opacity: 0;
+  opacity: 0.5;
+  transition: 2s;
+  animation-name: OnOver;
+  animation-duration: 1s;
   
-
 }
+.hidden {
+  
+  display: none;
+
+  
+}
+
 .MainOver{
-  position: absolute;
-  width: 30%;
-  height: 50%;
-  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 60%;
+  
+ 
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.178);
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.37);
+  backdrop-filter: blur( 10.5px );
+  -webkit-backdrop-filter: blur( 7.5px );
+  
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.ButJogar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.1rem;
+width: 150px;
+height: 80px;
+color: rgb(255, 255, 255);
+font-family: "Workbench", sans-serif;
+font-optical-sizing: auto;
+font-weight: 400;
+font-style: normal;
+font-variation-settings:
+  "BLED" 0,
+  "SCAN" 0;
+  cursor: pointer;
+transition: 1s;
+}
+.ButJogar:hover{
+  font-size: 3.3rem;
 }
 @media screen {
   
 }
 @media (width < 688px) {
-  .CanvasS {
-    
-  }
+ 
   
 }
