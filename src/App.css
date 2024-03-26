@@ -1,3 +1,12 @@
+.App {
+  background-color: black;
+}
+
+@keyframes cardspawn {
+  
+  from{bottom: -50px;}
+  to{bottom: 0px;}
+}
 .card {
   display: flex;
   position: relative;
@@ -9,6 +18,8 @@
   align-items: center;
   bottom: 0px;
   transition:2s;
+  animation-name: cardspawn;
+  animation-duration: 2s;
 
 }
 .card:hover {
@@ -32,7 +43,8 @@ footer {
   transition: top 1s;
 }
 .CanvasS{
-  position:relative;
+  background-color: black;
+  position:absolute;
   width: 100vw;
   height: 100vh;
 }
@@ -44,14 +56,15 @@ footer {
 
 
 .overLayer{
-  display: flex;
+  display: none;
   position: absolute;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
   background-color: black;
-  opacity: 1;
+  opacity: 0;
+  
 
 }
 .MainOver{
@@ -59,4 +72,13 @@ footer {
   width: 30%;
   height: 50%;
   background-color: blue;
+}
+@media screen {
+  
+}
+@media (width < 688px) {
+  .CanvasS {
+    
+  }
+  
 }

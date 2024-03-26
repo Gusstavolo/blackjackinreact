@@ -5,7 +5,7 @@ import { Experience } from '../components/Experience';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import React, { useRef, useState, createContext, useContext } from 'react';
 import styled from 'styled-components';
-import { CardsLOt } from '../components/mesa.jsx';
+import { CardsLOt, DoneB } from '../components/mesa.jsx';
 
 
 const CardStyleH1 = styled.h1`
@@ -37,7 +37,7 @@ export function Main() {
      
     <div >
       
-      <div className='CanvasS'> <Canvas shadowMap async>
+      <div className='CanvasS'> <Canvas shadows async>
               <OrbitControls></OrbitControls>
               <PerspectiveCamera makeDefault fov={65} near={0.5} far={100} position={[4, 0.2, 0]} />
 
@@ -45,6 +45,7 @@ export function Main() {
                   
                 </Experience>
                 <CardsLOt onClick={handleClick}/>
+                <DoneB />
         </Canvas></div>
        
      
