@@ -3,16 +3,16 @@ import '../App.css';
 import { Canvas } from '@react-three/fiber';
 import { Experience } from '../components/Experience';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
-import React, { useRef, useState, createContext, useContext } from 'react';
+import React, { useRef, useState, createContext, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { CardsLOt, DoneB,Deler } from '../components/mesa.jsx';
 import { DelerAnimProvider,useDelerAnim } from './animation.jsx';
-
+import GameDeler from './DelerConfig.jsx';
 const CardStyleH1 = styled.h1`
     font-size: 4rem;
     color: white;
 `;
-const randomNumberInRange = (min, max) => {
+export const randomNumberInRange = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
@@ -22,21 +22,65 @@ const randomNumberInRange = (min, max) => {
 
 export const Main = () => {
     
-
     const [cards, setCards] = useState([]);
+    const [isVisible, setIsVisible] = useState(true);
 
-    console.log("Valores das cartas:", cards);
-    
-    const handleClick = () => {
         
+    const click = () => {
+        setIsVisible(false); // Define isVisible como false quando a div é clicada
+    };
+
+    const handleClick = () => {
         const num = randomNumberInRange(1, 13);
         const newCard = { id: Date.now(), num };
         setCards([...cards, newCard]);
-       
+    };
+
+    const [cardsDeler, setCardsDeler] = useState([]);
+    const handleClickDeler = () => {
+        const numDeler = randomNumberInRange(1, 13);
+        const newCardDeler = { id: Date.now(), numDeler };
+        setCardsDeler([...cardsDeler, newCardDeler]);
     };
 
 
+   
 
+    useEffect(() => {
+        let i =0;
+        const addCard = () => {
+            const num = randomNumberInRange(1, 13);
+            const newCard = { id:  i++, num };
+            setCards(prevCards => [...prevCards, newCard]);
+        };
+      
+
+        // Chamando a função apenas se isVisible for false
+        if (!isVisible) {
+            addCard();
+            addCard();
+            
+        }
+    }, [isVisible]);
+    useEffect(() => {
+        let i =0;
+        const addCardDeler = () => {
+            const numDeler = randomNumberInRange(1, 13);
+            const newCardDeler = { id: i++, numDeler };
+            setCardsDeler(prevCardsDeler => [...prevCardsDeler, newCardDeler]);
+        };
+    
+
+        // Chamando a função apenas se isVisible for false
+        if (!isVisible) {
+            addCardDeler();
+            addCardDeler();
+            
+        }
+    }, [isVisible]);
+
+
+      
 
   return (
     <>
@@ -54,10 +98,7 @@ export const Main = () => {
                 <DoneB />
                 <Deler></Deler>
         </Canvas></div>
-       
-     
-      
-        
+    
           <footer>
             
           <div className='OrganizeCards'>
@@ -71,27 +112,27 @@ export const Main = () => {
                 ))}
             </div>
           </footer>
+         
           
          
-     
+          <Overlayer isVisible={isVisible} click={click} />
+
     </div>
    
     </>)}
 
-export function Overlayer() {
-    const [isVisible, setIsVisible] = useState(true);
 
-    const click = () => {
-        setIsVisible(false); // Define isVisible como false quando a div é clicada
-    };
-
+const Overlayer = ({ isVisible, click }) => {
     return (
         <div className={isVisible ? 'overLayer' : 'overLayer hidden'}>
             <div className='MainOver'>
+                {/* Utilizando a função click recebida como propriedade */}
                 <div onClick={click} className='ButJogar'>
                     JOGAR
                 </div>
             </div>
         </div>
     );
-}
+};
+
+export default Main;

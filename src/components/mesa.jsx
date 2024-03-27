@@ -33,7 +33,7 @@ export function CardsLOt(props) {
     const { nodes, materials } = useGLTF('./components/butondone.glb')
     return (
       <group {...props} dispose={null}>
-        <group position={[0.22, 0.2, 1.2]} scale={0.147} rotation={[0,0,-0.9]}>
+        <group position={[0.22, 0.2, 0.9]} scale={0.147} rotation={[0,0,-0.9]}>
           <mesh castShadow  geometry={nodes.Cube002_1.geometry} material={materials['Material.003']} />
           <mesh geometry={nodes.Cube002_2.geometry} material={materials['Material.005']} />
         </group>
@@ -46,17 +46,13 @@ export function CardsLOt(props) {
   export function Deler(props) {
     const group = useRef()
     const { nodes, materials, animations } = useGLTF('./components/maoob2.glb')
-    const {setAnimations} = useDelerAnim();
-    const {actions, names} = useAnimations(animations,group);
-    
-    useEffect(()=> {
-      setAnimations(names);
-    }, [names])
+    const {setAnimations} = useDelerAnim;
+    const {actions, names} = useAnimations(animations, group);
 
-
-    useEffect(()=> {
-      actions[names[2]].reset().fadeIn(0.5).play();
-    }, [])
+  
+    useEffect(() => {
+      actions[names[4]].reset().fadeIn(0.5).play();
+      }, []);
 
     return (
       <group castShadow receiveShadow ref={group} {...props} dispose={null}>
