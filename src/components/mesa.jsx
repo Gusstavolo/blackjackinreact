@@ -46,13 +46,25 @@ export function CardsLOt(props) {
   export function Deler(props) {
     const group = useRef()
     const { nodes, materials, animations } = useGLTF('./components/maoob2.glb')
-    const {setAnimations} = useDelerAnim;
+    const {setAnimations, animationIndex} = useDelerAnim();
     const {actions, names} = useAnimations(animations, group);
+    const { changeAnimationIndex } = useDelerAnim();
 
-  
     useEffect(() => {
-      actions[names[4]].reset().fadeIn(0.5).play();
-      }, []);
+      setAnimations(names);
+  }, [names]);
+
+
+ 
+
+  useEffect(() => {
+    actions[names[animationIndex]].reset().fadeIn(0.5).play();
+    return () => actions[names[animationIndex]].fadeOut(0.5);
+  }, [animationIndex, actions, names]);
+
+ useEffect(() => {
+    changeAnimationIndex(4);
+}, [changeAnimationIndex]);
 
     return (
       <group castShadow receiveShadow ref={group} {...props} dispose={null}>

@@ -9,8 +9,8 @@ export const DelerAnimProvider = (props) => {
     const [animations, setAnimations] = useState([]);
     const [currentAnimation, setCurrentAnimation] = useState(null);
 
-    const changeAnimation = (index) => {
-        setCurrentAnimation(animations[index]);
+    const changeAnimationIndex = (index) => {
+        setAnimationIndex(index);
     };
 
     return (
@@ -20,7 +20,7 @@ export const DelerAnimProvider = (props) => {
             animations,
             setAnimations,
             currentAnimation,
-            changeAnimation,
+            changeAnimationIndex, // Adicione este método
         }}>
             {props.children}
         </DelerAnimContext.Provider>

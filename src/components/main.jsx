@@ -24,8 +24,12 @@ export const Main = () => {
     
     const [cards, setCards] = useState([]);
     const [isVisible, setIsVisible] = useState(true);
+    const {setAnimations, animationIndex} = useDelerAnim();    
+    const { changeAnimationIndex } = useDelerAnim();
 
-        
+    
+
+
     const click = () => {
         setIsVisible(false); // Define isVisible como false quando a div é clicada
     };
@@ -36,6 +40,7 @@ export const Main = () => {
         setCards([...cards, newCard]);
     };
 
+    
     const [cardsDeler, setCardsDeler] = useState([]);
     const handleClickDeler = () => {
         const numDeler = randomNumberInRange(1, 13);
@@ -43,7 +48,7 @@ export const Main = () => {
         setCardsDeler([...cardsDeler, newCardDeler]);
     };
 
-
+   
    
 
     useEffect(() => {
@@ -54,30 +59,65 @@ export const Main = () => {
             setCards(prevCards => [...prevCards, newCard]);
         };
       
-
+        
         // Chamando a função apenas se isVisible for false
         if (!isVisible) {
-            addCard();
-            addCard();
+            setTimeout(() => {
+                addCard();// Muda para a animação 1
+            }, 300);
+            setTimeout(() => {
+                addCard();// Muda para a animação 1
+            }, 900);
             
         }
     }, [isVisible]);
-    useEffect(() => {
-        let i =0;
-        const addCardDeler = () => {
-            const numDeler = randomNumberInRange(1, 13);
-            const newCardDeler = { id: i++, numDeler };
-            setCardsDeler(prevCardsDeler => [...prevCardsDeler, newCardDeler]);
-        };
-    
 
-        // Chamando a função apenas se isVisible for false
-        if (!isVisible) {
-            addCardDeler();
-            addCardDeler();
-            
-        }
-    }, [isVisible]);
+
+    const [isAnimation2Completed, setIsAnimation2Completed] = useState(false);
+    const [isAnimation2Completed2, setIsAnimation2Completed2] = useState(false);
+    const [isVisibleVV, setIsVisibleVV] = useState(true);
+
+
+useEffect(() => {
+    let i = 0;
+
+    const addCardDeler = () => {
+        const numDeler = randomNumberInRange(1, 13);
+        const newCardDeler = { id: i++, numDeler };
+        setCardsDeler(prevCardsDeler => [...prevCardsDeler, newCardDeler]);
+    };
+
+
+ 
+
+
+    // Chamando a função apenas se isVisible for false
+    if (!isVisible) {
+        // Executa a animação 2 e define isAnimation2Completed como true
+        addCardDeler();
+        addCardDeler(); 
+        setIsAnimation2Completed(true);
+    }
+    else{
+        changeAnimationIndex(4);
+    }
+}, [isVisible]);
+
+useEffect(() => {
+    if(isAnimation2Completed){
+        changeAnimationIndex(2);
+        setTimeout(() => {
+            setIsAnimation2Completed(false);
+            setIsAnimation2Completed2(true);
+        }, 7000);
+    }
+}, [isAnimation2Completed, changeAnimationIndex]);
+
+useEffect(() => {
+    if(isAnimation2Completed2){
+        changeAnimationIndex(1);
+    }
+}, [isAnimation2Completed2, changeAnimationIndex]);
 
 
       
