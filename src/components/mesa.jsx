@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
-import { useDelerAnim } from './animation'
+import React, { useEffect, useRef } from 'react';
+import { useGLTF, useAnimations } from '@react-three/drei';
+import { useDelerAnim } from './animation';
+import '../App.css';
 export function MESA(props) {
   const { nodes, materials } = useGLTF('./components/mesa.glb')
   return (
@@ -18,10 +19,10 @@ useGLTF.preload('./components/mesa.glb')
 export function CardsLOt(props) {
     const { nodes, materials } = useGLTF('./components/cartasempreto.glb')
     return (
-      <group {...props} dispose={null}>
+      <group {...props} dispose={null} >
         <group position={[0.22, 0.2, -1.2]} scale={[0.273, 0.105, 0.187]} rotation={[0,0,-0.9]}>
-          <mesh castShadow receiveShadow geometry={nodes.Cube001_1.geometry} material={materials['Material.002']} />
-          <mesh receiveShadow geometry={nodes.Cube001_2.geometry} material={materials['Material.004']} />
+          <mesh   castShadow receiveShadow geometry={nodes.Cube001_1.geometry} material={materials['Material.002']} />
+          <mesh    receiveShadow geometry={nodes.Cube001_2.geometry} material={materials['Material.004']} />
         </group>
       </group>
     )
@@ -34,8 +35,9 @@ export function CardsLOt(props) {
     return (
       <group {...props} dispose={null}>
         <group position={[0.22, 0.2, 0.9]} scale={0.147} rotation={[0,0,-0.9]}>
-          <mesh castShadow  geometry={nodes.Cube002_1.geometry} material={materials['Material.003']} />
+          <mesh  castShadow  geometry={nodes.Cube002_1.geometry} material={materials['Material.003']} />
           <mesh geometry={nodes.Cube002_2.geometry} material={materials['Material.005']} />
+        
         </group>
       </group>
     )

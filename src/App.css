@@ -157,34 +157,33 @@ transition: 1s;
 .mainSideDeler {
   display: flex;
   position: relative;
-  top: -30%;
-  flex-direction: column;
   
+  flex-direction: column;
+  gap: 30px;
   justify-content: center;
   width: 50%;
   height: 100%;
 }
 .mainSidePlayer {
-  display: flex;
-  flex-direction: column;
+  display: flex; 
   position: relative;
-  top: -30%;
+  flex-direction: column;
+  justify-content: center;
+ 
+  gap: 30px;
+
   justify-content: center;
   width: 50%;
   height: 100%;
 }
-.winner{background: rgba(72, 255, 0, 0.589);
+.winner{
+  background: rgba(72, 255, 0, 0.589);
   box-shadow: 0 8px 32px 0 rgba(0, 255, 13, 0.37);
-  backdrop-filter: blur( 10.5px );}
+  backdrop-filter: blur( 10.5px );
+border-radius: 40px;}
 
 .h1deler{
-  display: flex;
-  position: relative;
-  top:0%;
-  justify-content: center;
-  align-items: center;
   font-size: 3.4rem;
-  
 color: rgb(255, 27, 27);
 font-family: "Workbench", sans-serif;
 font-optical-sizing: auto;
@@ -194,13 +193,30 @@ font-variation-settings:
   "BLED" 0,
   "SCAN" 0;
 }
-.h1Pts {
+.topMainEnd{
   display: flex;
-  position: relative;
+  
   justify-content: center;
+  align-items: center;
+  position: relative;
+  
+}
+.h1player{
+
+  font-size: 3.4rem;
+color: rgb(255, 255, 255);
+font-family: "Workbench", sans-serif;
+font-optical-sizing: auto;
+font-weight: 500;
+font-style: normal;
+font-variation-settings:
+  "BLED" 0,
+  "SCAN" 0;
+}
+.h1Pts {
+
   
   font-size: 3.9rem;
-  top: 27%;
  
   border-color: black;
 color: rgb(255, 115, 0);
@@ -213,22 +229,21 @@ font-variation-settings:
   "SCAN" 0;
 
 }
-.h1player{
+.Result {
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 3.4rem;
-  
-color: rgb(255, 255, 255);
-font-family: "Workbench", sans-serif;
-font-optical-sizing: auto;
-font-weight: 500;
-font-style: normal;
-font-variation-settings:
-  "BLED" 0,
-  "SCAN" 0;
-}
+  justify-content: center;
+  width: 230px;
+  height: 100px;
+  position: absolute;
+  top: 20vh;
+ border-radius: 30px;
 
+
+}
+.pointer:hover {
+  cursor: pointer;
+}
 
 
 @media (width < 600px) {

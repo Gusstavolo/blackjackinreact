@@ -21,7 +21,8 @@ export const randomNumberInRange = (min, max) => {
 
 
 export const Main = () => {
-    
+    const mesh = useRef();
+    const [hovered, setHover] = useState(false);
     const [cards, setCards] = useState([]);
     const [isVisible, setIsVisible] = useState(true);
     const [isVisibleEND, setIsVisibleEND] = useState(false);
@@ -136,9 +137,30 @@ useEffect(() => {
     }
 }, [isVisibleEND, changeAnimationIndex]);
 
+const determineWinner = (totalPlayer, totalDeler) => {
+    const playerDifference = Math.max(21 - totalPlayer, 0);
+    const dealerDifference = Math.max(21 - totalDeler, 0);
+
+    if (totalPlayer === 21 || (totalDeler > 21 && totalPlayer <= 21) || (playerDifference < dealerDifference && totalPlayer <= 21)) {
+        return "Player";
+    } else if (totalDeler === 21 || (totalPlayer > 21 && totalDeler <= 21) || (dealerDifference < playerDifference && totalDeler <= 21)) {
+        return "Dealer";
+    } else if (totalDeler === 21 && totalPlayer === 21 ){
+        return "Empate";
+    }
+    else{
+        return "Empate";
+    }
+};
+
+// Determinar o vencedor
+
+
+
 const totalDeler = cardsDeler.reduce((accumulator, currentCard) => accumulator + currentCard.numDeler, 0);
 const totalPlayer = cards.reduce((accumulator, currentCard) => accumulator + currentCard.num, 0);
 
+const winner = determineWinner(totalPlayer, totalDeler);
 
   return (
     <>
@@ -152,8 +174,15 @@ const totalPlayer = cards.reduce((accumulator, currentCard) => accumulator + cur
                 <Experience>
                   
                 </Experience>
-                <CardsLOt onClick={handleClick}/>
-                <DoneB onClick={clickEND}/>
+                <CardsLOt 
+                className="pointer" 
+                onClick={handleClick}
+               />
+                <DoneB 
+                
+                onClick={clickEND}
+                
+              />
                 <Deler></Deler>
         </Canvas></div>
     
@@ -177,7 +206,7 @@ const totalPlayer = cards.reduce((accumulator, currentCard) => accumulator + cur
                     
                     
                     
-         <OverlayerENDGAME isVisibleEND={!isVisibleEND} totalDeler={totalDeler} totalPlayer={totalPlayer} />
+         <OverlayerENDGAME isVisibleEND={!isVisibleEND} totalDeler={totalDeler} totalPlayer={totalPlayer} winner={winner} />
     </div>
    
     </>)}
@@ -196,20 +225,35 @@ const Overlayer = ({ isVisible, click }) => {
         </div>
     );
 };
-const OverlayerENDGAME = ({ isVisibleEND,totalDeler, totalPlayer }) => {
+const OverlayerENDGAME = ({ isVisibleEND,totalDeler, totalPlayer, winner }) => {
     return (
         <div className={isVisibleEND ? 'overLayerEND' : 'overLayerEND show'}>
             <div className='MainOverEND'>
-                <div className='mainSideDeler'>
-                    <div className='h1deler'> Dealer</div>
+                <div className={winner === 'Dealer' ? 'mainSideDeler winner' : 'mainSideDeler'}>
+                    <div className='topMainEnd'>
+                        <div className='h1deler'> Dealer</div>
+                    </div>
+                    <div className='topMainEnd'>
                     <div className='h1Pts'>{totalDeler} Pts</div>
+                    </div>
+                    
                 </div>
-                <div className='mainSidePlayer '>
-                    <div className='h1player'>Player</div>
-                    <div className='h1Pts'>{totalPlayer} Pts</div>
+                <div className={winner === 'Player' ? 'mainSidePlayer winner' : 'mainSidePlayer'}>
+
+                     <div className='topMainEnd'>
+                       <div className='h1player'>Player</div>
+                    </div>
+
+                    <div className='topMainEnd'>
+                        <div className='h1Pts'>{totalPlayer} Pts</div>
+                    </div>
+                    
                 </div>
                
             </div>
+            <div className='Result'>
+                        <div className='h1Pts'>{winner}</div>
+                    </div>
         </div>
     );
 };
