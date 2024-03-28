@@ -154,6 +154,81 @@ transition: 1s;
   
   border: 1px solid rgba(241, 30, 30, 0.18);
 }
+.mainSideDeler {
+  display: flex;
+  position: relative;
+  top: -30%;
+  flex-direction: column;
+  
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+}
+.mainSidePlayer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -30%;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+}
+.winner{background: rgba(72, 255, 0, 0.589);
+  box-shadow: 0 8px 32px 0 rgba(0, 255, 13, 0.37);
+  backdrop-filter: blur( 10.5px );}
+
+.h1deler{
+  display: flex;
+  position: relative;
+  top:0%;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.4rem;
+  
+color: rgb(255, 27, 27);
+font-family: "Workbench", sans-serif;
+font-optical-sizing: auto;
+font-weight: 500;
+font-style: normal;
+font-variation-settings:
+  "BLED" 0,
+  "SCAN" 0;
+}
+.h1Pts {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  
+  font-size: 3.9rem;
+  top: 27%;
+ 
+  border-color: black;
+color: rgb(255, 115, 0);
+font-family: "Workbench", sans-serif;
+font-optical-sizing: auto;
+font-weight: 500;
+font-style: normal;
+font-variation-settings:
+  "BLED" 0,
+  "SCAN" 0;
+
+}
+.h1player{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.4rem;
+  
+color: rgb(255, 255, 255);
+font-family: "Workbench", sans-serif;
+font-optical-sizing: auto;
+font-weight: 500;
+font-style: normal;
+font-variation-settings:
+  "BLED" 0,
+  "SCAN" 0;
+}
+
 
 
 @media (width < 600px) {

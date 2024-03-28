@@ -136,6 +136,8 @@ useEffect(() => {
     }
 }, [isVisibleEND, changeAnimationIndex]);
 
+const totalDeler = cardsDeler.reduce((accumulator, currentCard) => accumulator + currentCard.numDeler, 0);
+const totalPlayer = cards.reduce((accumulator, currentCard) => accumulator + currentCard.num, 0);
 
 
   return (
@@ -175,13 +177,14 @@ useEffect(() => {
                     
                     
                     
-         <OverlayerENDGAME isVisibleEND={!isVisibleEND} />
+         <OverlayerENDGAME isVisibleEND={!isVisibleEND} totalDeler={totalDeler} totalPlayer={totalPlayer} />
     </div>
    
     </>)}
 
 
 const Overlayer = ({ isVisible, click }) => {
+    
     return (
         <div className={isVisible ? 'overLayer' : 'overLayer hidden'}>
             <div className='MainOver'>
@@ -193,11 +196,18 @@ const Overlayer = ({ isVisible, click }) => {
         </div>
     );
 };
-const OverlayerENDGAME = ({ isVisibleEND }) => {
+const OverlayerENDGAME = ({ isVisibleEND,totalDeler, totalPlayer }) => {
     return (
         <div className={isVisibleEND ? 'overLayerEND' : 'overLayerEND show'}>
             <div className='MainOverEND'>
-                {/* Utilizando a função click recebida como propriedade */}
+                <div className='mainSideDeler'>
+                    <div className='h1deler'> Dealer</div>
+                    <div className='h1Pts'>{totalDeler} Pts</div>
+                </div>
+                <div className='mainSidePlayer '>
+                    <div className='h1player'>Player</div>
+                    <div className='h1Pts'>{totalPlayer} Pts</div>
+                </div>
                
             </div>
         </div>
