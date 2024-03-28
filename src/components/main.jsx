@@ -123,10 +123,14 @@ useEffect(() => {
     }
 }, [isAnimation2Completed2, changeAnimationIndex]);
 
+
+
+const [isBuy, setBuy] = useState(false);
+
 useEffect(() => {
     if(isAnimation2Completed3){
         changeAnimationIndex(1);
-
+        setBuy(true);
     }
 }, [isAnimation2Completed3, changeAnimationIndex]);
 
@@ -150,9 +154,7 @@ const determineWinner = (totalPlayer, totalDeler) => {
         return "Player";
     } else if (totalDeler === 21 || (totalPlayer > 21 && totalDeler <= 21) || (dealerDifference < playerDifference && totalDeler <= 21)) {
         return "Dealer";
-    } else if (totalDeler === 21 && totalPlayer === 21 ){
-        return "Empate";
-    }
+    } 
     else{
         return "Empate";
     }
@@ -198,11 +200,11 @@ useEffect(() => {
                 </Experience>
                 <CardsLOt 
                 
-                onClick={handleClick}
+                onClick={  isBuy ? handleClick : ''}
                />
                 <DoneB 
                 
-                onClick={clickEND}
+                onClick={isBuy ? clickEND : ''}
                 
               />
                 <Deler></Deler>
