@@ -137,6 +137,11 @@ useEffect(() => {
     }
 }, [isVisibleEND, changeAnimationIndex]);
 
+
+
+
+
+
 const determineWinner = (totalPlayer, totalDeler) => {
     const playerDifference = Math.max(21 - totalPlayer, 0);
     const dealerDifference = Math.max(21 - totalDeler, 0);
@@ -161,6 +166,23 @@ const totalDeler = cardsDeler.reduce((accumulator, currentCard) => accumulator +
 const totalPlayer = cards.reduce((accumulator, currentCard) => accumulator + currentCard.num, 0);
 
 const winner = determineWinner(totalPlayer, totalDeler);
+const [deler21, setdeler21] = useState(false);
+
+
+useEffect(() => {
+    if(totalDeler === 21 && !isVisible){
+        setdeler21(true);
+    }
+
+    if(deler21 && !isVisibleEND){
+        changeAnimationIndex(3);
+
+        setTimeout(() => {
+            clickEND();
+            setdeler21(false);
+        }, 2000);
+    }
+}, [deler21, changeAnimationIndex]);
 
   return (
     <>
@@ -175,7 +197,7 @@ const winner = determineWinner(totalPlayer, totalDeler);
                   
                 </Experience>
                 <CardsLOt 
-                className="pointer" 
+                
                 onClick={handleClick}
                />
                 <DoneB 
