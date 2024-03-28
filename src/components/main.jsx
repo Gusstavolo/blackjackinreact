@@ -24,7 +24,6 @@ export const Main = () => {
     
     const [cards, setCards] = useState([]);
     const [isVisible, setIsVisible] = useState(true);
-    const {setAnimations, animationIndex} = useDelerAnim();    
     const { changeAnimationIndex } = useDelerAnim();
 
     
@@ -75,7 +74,6 @@ export const Main = () => {
 
     const [isAnimation2Completed, setIsAnimation2Completed] = useState(false);
     const [isAnimation2Completed2, setIsAnimation2Completed2] = useState(false);
-    const [isVisibleVV, setIsVisibleVV] = useState(true);
 
 
 useEffect(() => {
@@ -99,7 +97,7 @@ useEffect(() => {
         setIsAnimation2Completed(true);
     }
     else{
-        changeAnimationIndex(4);
+        changeAnimationIndex(5);
     }
 }, [isVisible]);
 
@@ -120,7 +118,6 @@ useEffect(() => {
 }, [isAnimation2Completed2, changeAnimationIndex]);
 
 
-      
 
   return (
     <>

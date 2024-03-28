@@ -63,7 +63,7 @@ export function CardsLOt(props) {
   }, [animationIndex, actions, names]);
 
  useEffect(() => {
-    changeAnimationIndex(4);
+    changeAnimationIndex(5);
 }, [changeAnimationIndex]);
 
     return (
