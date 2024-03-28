@@ -121,6 +121,41 @@ transition: 1s;
 }
 
 
+.overLayerEND {
+  display: none;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.5;
+  transition: 2s;
+  animation-name: OnOver;
+  animation-duration: 1s;
+
+}
+.show {
+  display: flex;
+}
+.MainOverEND {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 70%;
+  
+ 
+  border-radius: 40px;
+  background: rgba(223, 18, 18, 0.178);
+  box-shadow: 0 8px 32px 0 rgba(247, 9, 9, 0.37);
+  backdrop-filter: blur( 10.5px );
+  -webkit-backdrop-filter: blur( 7.5px );
+  
+  border: 1px solid rgba(241, 30, 30, 0.18);
+}
+
+
 @media (width < 600px) {
  
   .OnlyPC{

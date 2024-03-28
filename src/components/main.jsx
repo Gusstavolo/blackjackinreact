@@ -24,9 +24,13 @@ export const Main = () => {
     
     const [cards, setCards] = useState([]);
     const [isVisible, setIsVisible] = useState(true);
+    const [isVisibleEND, setIsVisibleEND] = useState(false);
     const { changeAnimationIndex } = useDelerAnim();
 
     
+    const clickEND = () => {
+        setIsVisibleEND(true); // Define isVisible como false quando a div é clicada
+    };
 
 
     const click = () => {
@@ -47,17 +51,17 @@ export const Main = () => {
         setCardsDeler([...cardsDeler, newCardDeler]);
     };
 
-   
-   
-
-    useEffect(() => {
-        let i =0;
-        const addCard = () => {
+    let nextIdD = 1;
+   const addCard = () => {
             const num = randomNumberInRange(1, 13);
-            const newCard = { id:  i++, num };
+            const newCard = { id:  nextIdD++, num };
             setCards(prevCards => [...prevCards, newCard]);
         };
       
+
+    useEffect(() => {
+       
+        
         
         // Chamando a função apenas se isVisible for false
         if (!isVisible) {
@@ -74,21 +78,17 @@ export const Main = () => {
 
     const [isAnimation2Completed, setIsAnimation2Completed] = useState(false);
     const [isAnimation2Completed2, setIsAnimation2Completed2] = useState(false);
+    const [isAnimation2Completed3, setIsAnimation2Completed3] = useState(false);
 
-
-useEffect(() => {
-    let i = 0;
-
+    let nextId = 1;
     const addCardDeler = () => {
         const numDeler = randomNumberInRange(1, 13);
-        const newCardDeler = { id: i++, numDeler };
+        const newCardDeler = { id: nextId++, numDeler };
         setCardsDeler(prevCardsDeler => [...prevCardsDeler, newCardDeler]);
     };
 
-
- 
-
-
+useEffect(() => {
+    
     // Chamando a função apenas se isVisible for false
     if (!isVisible) {
         // Executa a animação 2 e define isAnimation2Completed como true
@@ -111,11 +111,30 @@ useEffect(() => {
     }
 }, [isAnimation2Completed, changeAnimationIndex]);
 
+
 useEffect(() => {
     if(isAnimation2Completed2){
-        changeAnimationIndex(1);
+        changeAnimationIndex(4);
+        setTimeout(() => {
+            setIsAnimation2Completed(false);
+            setIsAnimation2Completed3(true);
+        }, 2000);
     }
 }, [isAnimation2Completed2, changeAnimationIndex]);
+
+useEffect(() => {
+    if(isAnimation2Completed3){
+        changeAnimationIndex(1);
+
+    }
+}, [isAnimation2Completed3, changeAnimationIndex]);
+
+useEffect(() => {
+    // Chamando a função apenas quando Acabar
+    if (isVisibleEND) {
+        changeAnimationIndex(5);
+    }
+}, [isVisibleEND, changeAnimationIndex]);
 
 
 
@@ -132,7 +151,7 @@ useEffect(() => {
                   
                 </Experience>
                 <CardsLOt onClick={handleClick}/>
-                <DoneB />
+                <DoneB onClick={clickEND}/>
                 <Deler></Deler>
         </Canvas></div>
     
@@ -153,7 +172,10 @@ useEffect(() => {
           
          
           <Overlayer isVisible={isVisible} click={click} />
-
+                    
+                    
+                    
+         <OverlayerENDGAME isVisibleEND={!isVisibleEND} />
     </div>
    
     </>)}
@@ -167,6 +189,16 @@ const Overlayer = ({ isVisible, click }) => {
                 <div onClick={click} className='ButJogar'>
                     JOGAR
                 </div>
+            </div>
+        </div>
+    );
+};
+const OverlayerENDGAME = ({ isVisibleEND }) => {
+    return (
+        <div className={isVisibleEND ? 'overLayerEND' : 'overLayerEND show'}>
+            <div className='MainOverEND'>
+                {/* Utilizando a função click recebida como propriedade */}
+               
             </div>
         </div>
     );
