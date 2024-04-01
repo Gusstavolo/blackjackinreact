@@ -235,11 +235,13 @@ useEffect(() => {
 const Overlayer21 = ({ isVisible, isBuy }) => {
 
     return(
-       
-        <div className={isVisible ? 'overLayer21 hidden' : (isBuy ? 'overLayer21 hidden' : 'overLayer21 show')} >
+       <div className='fixO21'>
+         <div className={isVisible ? 'overLayer21 hidden' : (isBuy ? 'overLayer21 hidden' : 'overLayer21 show')} >
            
             <h1 className='overLayer21Txt'>FAÇA 21 PONTOS.</h1>
         </div>
+       </div>
+       
     )
 }
 const Overlayer = ({ isVisible, click }) => {
