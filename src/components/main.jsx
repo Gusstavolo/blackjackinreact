@@ -256,6 +256,12 @@ const Overlayer = ({ isVisible, click }) => {
     );
 };
 const OverlayerENDGAME = ({ isVisibleEND,totalDeler, totalPlayer, winner }) => {
+    const reloadPageSmoothly = () => {
+        setTimeout(() => {
+            window.location.reload(); // Recarrega a página após 1 segundo
+        }, 1000);
+    };
+    
     return (
         <div className={isVisibleEND ? 'overLayerEND' : 'overLayerEND show'}>
             <div className='MainOverEND'>
@@ -283,6 +289,12 @@ const OverlayerENDGAME = ({ isVisibleEND,totalDeler, totalPlayer, winner }) => {
             </div>
             <div className='Result'>
                         <div className='h1Pts'>{winner}</div>
+                    </div>
+
+                    <div className='Result p' onClick={reloadPageSmoothly}>
+                        <div className='h1Pts'>
+                            <div className='retry'></div>
+                        </div>
                     </div>
         </div>
     );

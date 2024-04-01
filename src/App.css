@@ -237,6 +237,18 @@ font-variation-settings:
   "SCAN" 0;
 
 }
+.retry{
+  width: 80px;
+  height: 80px;
+  background: url('./components/img/icons8-reload-100.png');
+  background-size: 100%;
+  transition: 0.2s;
+}
+.retry:hover {
+  width: 84px;
+  height: 84px;
+}
+
 .Result {
   display: flex;
   align-items: center;
@@ -246,6 +258,12 @@ font-variation-settings:
   position: absolute;
   top: 20vh;
  border-radius: 30px;
+}
+.p {
+  top: 64vh;
+  cursor: pointer;
+  width: 140px;
+  height: 80px;
 
 
 }
