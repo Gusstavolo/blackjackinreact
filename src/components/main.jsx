@@ -223,10 +223,8 @@ useEffect(() => {
             </div>
           </footer>
         
-         
-          <Overlayer isVisible={isVisible} click={click} />
-                    
-                    
+         <Overlayer21 isVisible={isVisible} isBuy={isBuy} ></Overlayer21>
+          <Overlayer isVisible={isVisible} click={click} />    
                     
          <OverlayerENDGAME isVisibleEND={!isVisibleEND} totalDeler={totalDeler} totalPlayer={totalPlayer} winner={winner} />
     </div>
@@ -234,6 +232,16 @@ useEffect(() => {
     </>)}
 
 
+const Overlayer21 = ({ isVisible, isBuy }) => {
+
+    return(
+       
+        <div className={isVisible ? 'overLayer21 hidden' : (isBuy ? 'overLayer21 hidden' : 'overLayer21 show')} >
+           
+            <h1 className='overLayer21Txt'>FAÇA 21 PONTOS.</h1>
+        </div>
+    )
+}
 const Overlayer = ({ isVisible, click }) => {
     
     return (

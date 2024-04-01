@@ -18,6 +18,8 @@ function App() {
           <div className='OnlyPC'>Only pc :C</div>
     </div>
        <Interface />
+       <div className='credits' onClick={() => window.location.href = "https://github.com/Gusstavolo" }
+       >by @Gusstavolo</div>
    </>
   );
 }
