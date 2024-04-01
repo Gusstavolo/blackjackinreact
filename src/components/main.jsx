@@ -147,16 +147,15 @@ useEffect(() => {
 
 
 const determineWinner = (totalPlayer, totalDeler) => {
-    const playerDifference = Math.max(21 - totalPlayer, 0);
-    const dealerDifference = Math.max(21 - totalDeler, 0);
+    const playerDifference = Math.abs(21 - totalPlayer);
+    const dealerDifference = Math.abs(21 - totalDeler);
 
     if (totalPlayer === 21 || (totalDeler > 21 && totalPlayer <= 21) || (playerDifference < dealerDifference && totalPlayer <= 21)) {
-        return "Player";
+        return "Player"; // Jogador está mais próximo de 21 ou já tem 21
     } else if (totalDeler === 21 || (totalPlayer > 21 && totalDeler <= 21) || (dealerDifference < playerDifference && totalDeler <= 21)) {
-        return "Dealer";
-    } 
-    else{
-        return "Empate";
+        return "Dealer"; // Dealer está mais próximo de 21 ou já tem 21
+    } else {
+        return "Empate"; // Nenhum jogador tem 21 e nenhum jogador estourou
     }
 };
 
@@ -223,8 +222,7 @@ useEffect(() => {
                 ))}
             </div>
           </footer>
-         
-          
+        
          
           <Overlayer isVisible={isVisible} click={click} />
                     
