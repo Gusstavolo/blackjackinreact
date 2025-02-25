@@ -1,6 +1,6 @@
 # Projeto BlackDealer
 <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXAyemZxdXdtcnZnb3VjaXZlajZrZnR0Z3MzYmZmdjdjYm51d2oycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WafHYSwqFjfrXz8Wzz/giphy.gif" >
-<p>O Projeto React Three Fiber Game é um jogo desenvolvido em React utilizando a biblioteca React Three Fiber (R3F) para renderização 3D. O jogo é uma experiência imersiva em 3D onde os jogadores podem interagir com o ambiente e realizar ações dentro do jogo.</p>
+<p>O Projeto BlackDealer é um jogo desenvolvido em React utilizando a biblioteca React Three Fiber (R3F) para renderização 3D. O jogo é uma experiência imersiva em 3D onde os jogadores podem interagir com o ambiente e realizar ações dentro do jogo.</p>
 
 
  ## Tecnologias Utilizadas
